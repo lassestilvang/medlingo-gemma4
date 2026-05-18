@@ -27,8 +27,8 @@ app.add_middleware(
 IS_DEMO = os.getenv("SPACE_ID") is not None or os.getenv("COLAB_GPU") is not None
 
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-# Use e2b for demos (faster on CPU), e4b for local use
-DEFAULT_MODEL = "gemma4:e2b" if IS_DEMO else "gemma4:e4b"
+# Use e2b for demos (faster on CPU), gemma4 (latest) for local use
+DEFAULT_MODEL = "gemma4:e2b" if IS_DEMO else "gemma4"
 GEMMA_MODEL = os.getenv("GEMMA_MODEL", DEFAULT_MODEL)
 
 SYSTEM_PROMPT = """You are MedLingo, a medical document assistant. Your job is to help patients understand their medical documents — prescriptions, lab results, discharge summaries, radiology reports, and more.
