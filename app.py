@@ -40,15 +40,41 @@ Rules:
 Be warm, reassuring, and thorough. Patients reading medical documents are often anxious — help them feel informed and empowered."""
 
 LANGUAGES = {
-    "en": "English", "es": "Spanish", "fr": "French", "de": "German",
-    "pt": "Portuguese", "zh": "Chinese", "ja": "Japanese", "ko": "Korean",
-    "ar": "Arabic", "hi": "Hindi", "bn": "Bengali", "ur": "Urdu",
-    "tr": "Turkish", "vi": "Vietnamese", "th": "Thai", "pl": "Polish",
-    "nl": "Dutch", "it": "Italian", "sv": "Swedish", "da": "Danish",
-    "no": "Norwegian", "fi": "Finnish", "el": "Greek", "cs": "Czech",
-    "ro": "Romanian", "hu": "Hungarian", "uk": "Ukrainian", "ru": "Russian",
-    "id": "Indonesian", "ms": "Malay", "tl": "Filipino", "sw": "Swahili",
-    "am": "Amharic", "ha": "Hausa", "yo": "Yoruba",
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French",
+    "de": "German",
+    "pt": "Portuguese",
+    "zh": "Chinese",
+    "ja": "Japanese",
+    "ko": "Korean",
+    "ar": "Arabic",
+    "hi": "Hindi",
+    "bn": "Bengali",
+    "ur": "Urdu",
+    "tr": "Turkish",
+    "vi": "Vietnamese",
+    "th": "Thai",
+    "pl": "Polish",
+    "nl": "Dutch",
+    "it": "Italian",
+    "sv": "Swedish",
+    "da": "Danish",
+    "no": "Norwegian",
+    "fi": "Finnish",
+    "el": "Greek",
+    "cs": "Czech",
+    "ro": "Romanian",
+    "hu": "Hungarian",
+    "uk": "Ukrainian",
+    "ru": "Russian",
+    "id": "Indonesian",
+    "ms": "Malay",
+    "tl": "Filipino",
+    "sw": "Swahili",
+    "am": "Amharic",
+    "ha": "Hausa",
+    "yo": "Yoruba",
 }
 
 
@@ -117,4 +143,5 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 if __name__ == "__main__":
     import uvicorn
+
     uvicorn.run(app, host="0.0.0.0", port=8000)
