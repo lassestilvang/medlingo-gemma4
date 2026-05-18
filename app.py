@@ -105,7 +105,9 @@ async def analyze_document(
     user_prompt = f"Please analyze this medical document and explain it in {lang_name}. Be thorough and clear."
 
     async def stream_response():
-        async with httpx.AsyncClient(timeout=120.0) as client:
+        # Vision models on CPU can be very slow (30-60s for first token)
+        # We use a long timeout to prevent ReadTimeout errors in the demo
+        async with httpx.AsyncClient(timeout=300.0) as client:
             async with client.stream(
                 "POST",
                 f"{OLLAMA_BASE_URL}/api/chat",
@@ -121,6 +123,7 @@ async def analyze_document(
                     ],
                     "stream": True,
                 },
+                timeout=None, # Disable internal timeout for the stream itself
             ) as response:
                 async for line in response.aiter_lines():
                     if line.strip():
@@ -143,6 +146,9 @@ async def analyze_document(
         },
     )
 
+
+# Ensure static directory exists
+Path("static").mkdir(exist_ok=True)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
