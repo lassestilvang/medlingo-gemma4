@@ -23,6 +23,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy project files
 COPY . .
+COPY static/ ./static/
+
+# Debug: list files to verify structure
+RUN ls -R
 
 # Create a start script to handle Ollama and the App
 RUN echo '#!/bin/bash\n\
