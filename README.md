@@ -54,7 +54,7 @@ All components run on `localhost`. The browser sends the image to FastAPI, which
 
 ```bash
 # 1. Pull Gemma 4 model
-ollama pull gemma4:e4b
+ollama pull gemma4
 
 # 2. Install dependencies
 pip install -r requirements.txt
