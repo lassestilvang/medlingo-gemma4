@@ -25,10 +25,19 @@ COPY . .
 
 # Create a start script to handle Ollama and the App
 RUN echo '#!/bin/bash\n\
+echo "Starting Ollama..." \n\
 ollama serve > ollama.log 2>&1 &\n\
-sleep 5\n\
-ollama pull gemma4:e4b\n\
-python app.py\n\
+\n\
+echo "Waiting for Ollama to be ready..." \n\
+until curl -s http://localhost:11434/api/tags > /dev/null; do \n\
+  sleep 2 \n\
+done \n\
+\n\
+echo "Pulling model $GEMMA_MODEL..." \n\
+ollama pull ${GEMMA_MODEL:-gemma4:e2b} \n\
+\n\
+echo "Starting FastAPI..." \n\
+python app.py \n\
 ' > start.sh && chmod +x start.sh
 
 # Expose port
